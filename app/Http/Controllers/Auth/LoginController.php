@@ -41,5 +41,14 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('dart');
     }
+    public function redirectToLogin()
+    {
+        // Ustaw komunikat o błędzie
+        session()->flash('error', 'Musisz się najpierw zalogować.');
+
+        // Przekieruj do strony logowania
+        return redirect()->route('login');
+    }
+
 }
 

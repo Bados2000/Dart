@@ -8,7 +8,11 @@
                     <div class="text-center custom-h1">
                         <h1 class="mx-auto my-0 ">eDart</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Darmowa platforma dla graczy darta.</h2>
-                        <a class="btn btn-primary btn-primary-start href=#about">Zaczynamy</a>
+                        @if (Auth::check())
+                            <a class="btn btn-primary btn-primary-start" href="{{ route('game') }}">Graj</a>
+                        @else
+                            <a class="btn btn-primary btn-primary-start" href="{{ route('redirectToLogin') }}">Graj</a>
+                        @endif
                     </div>
                 </div>
             </div>

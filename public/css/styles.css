@@ -11364,6 +11364,7 @@ body::-webkit-scrollbar {
     display: none; /* Dla przeglądarek WebKit jak Chrome, Safari */
 }
 .form-container {
+    margin-top: 96px !important;
     min-height: 256px;
     min-width: 500px;
     background-color: #444;

@@ -20,5 +20,10 @@ Route::get('/', function () {
     return view('dart');
 })->name('dart');
 
+Route::get('/game', function () {
+    return view('game');
+})->name('game');
+
 Auth::routes();
 
+Route::get('/redirectToLogin', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToLogin'])->name('redirectToLogin');
