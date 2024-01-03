@@ -8,9 +8,7 @@
                     <div class="text-center custom-h1">
                         <h1 class="mx-auto my-0 ">eDart</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Darmowa platforma dla graczy darta.</h2>
-                        <a class="btn btn-primary" href="#about">Get Started</a>
-                        <a class="btn btn-primary" href="#about">Get Started</a>
-
+                        <a class="btn btn-primary btn-primary-start href=#about">Zaczynamy</a>
                     </div>
                 </div>
             </div>

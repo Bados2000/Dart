@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dart');
-});
+})->name('dart');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
