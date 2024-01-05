@@ -3337,19 +3337,7 @@ textarea.form-control-lg {
 .dropdown-toggle {
   white-space: nowrap;
 }
-.dropdown-toggle::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
-}
-.dropdown-toggle:empty::after {
-  margin-left: 0;
-}
+
 
 .dropdown-menu {
   --bs-dropdown-zindex: 1000;
@@ -3927,6 +3915,7 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
 }
 .navbar-nav .show > .nav-link,
 .navbar-nav .nav-link.active {
@@ -11405,16 +11394,7 @@ form h2 {
     color: white;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #666;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+
 
 button:hover {
     background-color: #777;
@@ -11452,3 +11432,172 @@ button:hover {
     text-align: center;
     margin-top: 20px;
 }
+.menu-dotsPY {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none; /* zapobiega zaznaczaniu tekstu */
+}
+
+.dotPY {
+    display: block;
+    color: white;
+    font-size: 16px; /* Zmniejsz rozmiar kropki */
+    line-height: 6px; /* Usuwa dodatkowe pionowe odstępy */
+    margin: 1px 0; /* Minimalny odstęp między kropkami */
+}
+/* Styl dla kropek przy najechaniu */
+.dropdownik:hover .dotPY {
+    color: #64a19d; /* Zmienia kolor wszystkich kropek przy najechaniu na menu-dotsPY */
+}
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu {
+    background-color: #333; /* Ciemny kolor tła, dostosuj do swojego stylu */
+    border-color: #555; /* Kolor obramowania, dostosuj do swojego stylu */
+}
+
+.dropdown-item {
+    color: white; /* Kolor tekstu elementów, dostosuj do koloru tła */
+}
+.dropdownik{
+    width: 30px;
+}
+.dropdown-item:hover {
+    background-color: #555; /* Kolor tła elementów podczas najechania */
+}
+.menu-dotsPY:hover {
+    /* Przykład: zmiana koloru lub dodanie cienia dla efektu wizualnego */
+}
+.containerPY {
+    display: flex;
+    justify-content: space-between; /* Rozkłada elementy na całej szerokości kontenera */
+    align-items: center; /* Wyrównuje elementy pionowo */
+}
+.user-btn {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Dla wycentrowania treści wewnątrz przycisku */
+    width: 200px; /* Stała szerokość przycisku */
+    height: 50px; /* Stała wysokość przycisku */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0; /* Usuwamy padding, jeśli chcemy stałe wymiary */
+    background-color: #0d1619;
+}
+
+.user-logo {
+    width: 40px; /* Stała szerokość logo */
+    height: 40px; /* Stała wysokość logo */
+    border-radius: 20px; /* Ustawia kształt na koło */
+    object-fit: cover;
+    margin-right: 10px;
+    --bs-btn-bg: rgb(72, 72, 72);
+    border: 2px solid rgb(80, 80, 80);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Opcjonalny cień dla lepszego efektu */
+
+}
+
+.user-btn span {
+    overflow: hidden; /* Zapobiega wychodzeniu tekstu poza przycisk */
+    white-space: nowrap; /* Tekst nie będzie przechodził do nowej linii */
+    text-overflow: ellipsis; /* Dodaje '...' jeśli tekst jest za długi */
+    max-width: calc(100% - 50px); /* Maksymalna szerokość tekstu z uwzględnieniem logo i marginesu */
+}
+.custom-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Zapobiega zawijaniu elementów */
+    height: auto;
+}
+
+.side-div, .center-div {
+    flex: 0 0 auto; /* Zapobiega rozciąganiu elementów */
+    height: 400px; /* Przykładowa stała wysokość dla wszystkich divów */
+
+}
+
+.side-div {
+    width: 350px; /* Szerokość dla bocznych divów, 10px dla marginesu */
+    text-align: center; /* Wyśrodkowanie tekstu, jeśli jest to blok tekstu */
+}
+.side-div-inside {
+    width: 350px; /* Szerokość dla bocznych divów, 10px dla marginesu */
+    height: 350px;
+    text-align: center; /* Wyśrodkowanie tekstu, jeśli jest to blok tekstu */
+}
+.center-div {
+    width: 250px; /* Szerokość dla środkowego diva, 10px dla marginesu */
+}
+
+.fit-image {
+    width: 100%; /* Szerokość obrazu będzie 100% szerokości .center-div */
+    height: 100%; /* Wysokość obrazu będzie 100% wysokości .center-div */
+    object-fit: contain; /* Zapewnia, że obraz będzie zawarty w divie bez rozciągania */
+}
+.image-border{
+    border-top: 6px solid gray; /* Górne obramowanie */
+    border-right: 6px solid gray; /* Prawe obramowanie */
+    border-left: 6px solid gray; /* Lewe obramowanie */
+    border-bottom: 6px solid gray; /* Brak dolnego obramowania */
+    border-top-left-radius: 60px; /* Zaokrąglenie lewego górnego rogu */
+    border-top-right-radius: 60px; /* Zaokrąglenie prawego górnego rogu */
+    border-bottom-left-radius: 0; /* Bez zaokrąglenia dolnego lewego rogu */
+    border-bottom-right-radius: 0; /* Bez zaokrąglenia dolnego prawego rogu */
+
+    -webkit-box-shadow: 2px -2px 60px 23px rgba(255, 255, 255, 0.83);
+    -moz-box-shadow: 2px -2px 60px 23px rgba(255, 255, 255, 0.83);
+    box-shadow: 2px -2px 60px 23px rgba(255, 255, 255, 0.83);
+}
+.rounded-bottom-corners {
+    height: 50px;
+    border-bottom-left-radius: 10px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 10px; /* Zaokrąglenie dolnego prawego rogu */
+    display: flex; /* Ustawia Flexbox */
+    align-items: center; /* Wyśrodkowuje zawartość w pionie */
+    justify-content: center; /* Wyśrodkowuje zawartość w poziomie (opcjonalnie) */
+    background-color: gray;
+    border-right: 6px solid black; /* Prawe obramowanie */
+    border-left: 6px solid black; /* Lewe obramowanie */
+    border-bottom: 6px solid black; /* Brak dolnego obramowania */
+    color: #404545;
+    font-size: 18px; /* Zmienia rozmiar tekstu */
+    font-weight: bold; /* Pogrubienie tekstu */
+    text-transform: uppercase; /* Zamienia tekst na wielkie litery */
+}
+.text-below-row {
+    margin-top: 20px; /* Dodaje margines na górze, aby oddzielić od custom-row */
+    text-align: center; /* Opcjonalnie, jeśli chcesz wyśrodkować tekst */
+    width: 950px;
+}
+.container-fluider {
+    /* inne style */
+    flex-direction: column !important; /* Układa dzieci w pionie */
+}
+.search-button {
+    /* Podstawowe style dla przycisku */
+    color: black;
+    font-weight: bold; /* Pogrubienie tekstu */
+    font-size: 23px; /* Zmienia rozmiar tekstu */
+
+    /* inne style */
+}
+
+.search-button.active {
+    background-color: gray; /* Kolor tła, gdy stoper jest aktywny */
+}
+
+.search-button.active:hover {
+    background-color: red; /* Kolor tła przycisku po najechaniu kursorem */
+}
+
+

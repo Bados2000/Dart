@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Profile;
 
 class RegisterController extends Controller
 {
@@ -35,11 +36,15 @@ class RegisterController extends Controller
             'username' => $validatedData['username'],
             'password' => Hash::make($validatedData['password']),
         ]);
-
+        // Tworzenie profilu użytkownika
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        // tutaj możesz ustawić domyślne wartości dla profilu
+        $profile->save();
         // Automatyczne logowanie użytkownika po rejestracji
         Auth::login($user);
 
         // Przekierowanie użytkownika na stronę główną lub inną stronę
-        return redirect()->route('/dart');
+        return redirect()->route('dart');
     }
 }

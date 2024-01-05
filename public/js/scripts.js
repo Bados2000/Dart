@@ -6,7 +6,36 @@
 //
 // Scripts
 //
+let isStopwatchActive = false;
+let stopwatchInterval;
+let elapsedSeconds = 0;
 
+const button = document.getElementById('search-toggle-button');
+button.addEventListener('click', function() {
+    if (isStopwatchActive) {
+        // Zatrzymaj stoper i zmień tekst na "Szukaj"
+        clearInterval(stopwatchInterval);
+        button.textContent = 'Szukaj';
+        button.classList.remove('active');
+        isStopwatchActive = false;
+    } else {
+        // Ustaw tekst na "00:00" i uruchom stoper
+        button.textContent = '00:00';
+        elapsedSeconds = 0;
+        stopwatchInterval = setInterval(function() {
+            elapsedSeconds++;
+            button.textContent = formatTime(elapsedSeconds);
+        }, 1000);
+        button.classList.add('active');
+        isStopwatchActive = true;
+    }
+});
+
+function formatTime(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+}
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element

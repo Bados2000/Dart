@@ -18,8 +18,8 @@
 </head>
 
 <body id="page-top">
-<nav class="navbar navbar-expand-lg navbar-light {{ Request::is('/') ? 'fixed-top' : '' }} navbar-shrink" id="mainNav">
-    <div class="container px-4 px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
+    <div class="container-fluid px-4 px-lg-5">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             Menu <i class="fas fa-bars"></i>
         </button>
@@ -33,9 +33,12 @@
 
             </ul>
             @auth
-                <p>Użytkownik zalogowany jako: {{ Auth::user()->username }}</p>
+                <button class="user-btn">
+                    <img src="{{ Auth::user()->profile->profile_picture }}" alt="User Logo" class="user-logo">
+                    <span>{{ Auth::user()->username }}</span>
+                </button>
             @else
-                <p>Nie jesteś zalogowany.</p>
+                <!-- Nic nie wyświetla się dla niezalogowanych użytkowników -->
             @endauth
             <!-- Authentication Links -->
             <!-- Authentication Links -->
@@ -47,19 +50,40 @@
                     <a class="btn btn-primary btn-primary-sign" href="{{ route('register') }}">Utwórz konto</a>
                 @endif
             @else
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+
+                <div class="dropdown dropdownik dropdown-toggle " id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="" >
+                        <div class="menu-dotsPY">
+                            <span class="dotPY">&#8226;</span>
+                            <span class="dotPY">&#8226;</span>
+                            <span class="dotPY">&#8226;</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <!-- Twoje pozycje menu -->
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                        <!-- Dodaj więcej pozycji menu tutaj -->
+                    </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+
             @endguest
 
         </div>
