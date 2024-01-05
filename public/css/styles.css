@@ -11396,8 +11396,9 @@ form h2 {
 
 
 
-button:hover {
+a:hover {
     background-color: #777;
+    color:white !important;
 }
 
 .sh1{
@@ -11504,7 +11505,6 @@ button:hover {
     --bs-btn-bg: rgb(72, 72, 72);
     border: 2px solid rgb(80, 80, 80);
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Opcjonalny cień dla lepszego efektu */
-
 }
 
 .user-btn span {
@@ -11542,15 +11542,17 @@ button:hover {
 .fit-image {
     width: 100%; /* Szerokość obrazu będzie 100% szerokości .center-div */
     height: 100%; /* Wysokość obrazu będzie 100% wysokości .center-div */
-    object-fit: contain; /* Zapewnia, że obraz będzie zawarty w divie bez rozciągania */
+    object-fit: cover; /* Zapewnia, że obraz będzie zawarty w divie bez rozciągania */
+    object-position: center; /* Wyśrodkowanie obrazu w kontenerze */
+
 }
 .image-border{
     border-top: 6px solid gray; /* Górne obramowanie */
     border-right: 6px solid gray; /* Prawe obramowanie */
     border-left: 6px solid gray; /* Lewe obramowanie */
     border-bottom: 6px solid gray; /* Brak dolnego obramowania */
-    border-top-left-radius: 60px; /* Zaokrąglenie lewego górnego rogu */
-    border-top-right-radius: 60px; /* Zaokrąglenie prawego górnego rogu */
+    border-top-left-radius: 20px; /* Zaokrąglenie lewego górnego rogu */
+    border-top-right-radius: 20px; /* Zaokrąglenie prawego górnego rogu */
     border-bottom-left-radius: 0; /* Bez zaokrąglenia dolnego lewego rogu */
     border-bottom-right-radius: 0; /* Bez zaokrąglenia dolnego prawego rogu */
 
@@ -11600,4 +11602,63 @@ button:hover {
     background-color: red; /* Kolor tła przycisku po najechaniu kursorem */
 }
 
+
+
+.user-stats {
+    /* Style dla statystyk użytkownika */
+    color: white;
+}
+.user-logo-profile {
+    /* Style dla logo użytkownika */
+    max-width: 350px; /* Dostosuj rozmiar */
+    max-height: 350px;
+    border-radius: 50%; /* Jeśli chcesz okrągłe logo */
+    margin-left: 0.5px;
+}
+.span-profile {
+    color: #404545;
+    font-size: 18px; /* Zmienia rozmiar tekstu */
+    font-weight: bold; /* Pogrubienie tekstu */
+    text-transform: uppercase; /* Zamienia tekst na wielkie litery */
+}
+.profile-container-lower {
+    /* Style dla logo i nazwy użytkownika */
+}
+.profile-container-upper {
+    /* Style dla logo i nazwy użytkownika */
+    height: 350px;
+    width: auto;
+    border: 8px solid #0d1619;
+; /* Obramowanie */
+    border-top-left-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-left-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    background-color: gray;
+}
+.profile-container-upper-left {
+    /* Style dla logo i nazwy użytkownika */
+    box-sizing: border-box !important;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%; /* Jeśli chcesz okrągłe logo */
+    border-top: 8px solid #0d1619;
+; /* Obramowanie górne */
+    border-right: 8px solid #0d1619;
+; /* Obramowanie prawe */
+    border-bottom: 8px solid #0d1619;
+; /* Obramowanie dolne */
+    border-left: 0px; /* Brak obramowania z lewej strony *
+    /* Style dla logo i nazwy użytkownika */
+    text-align: center;
+}
+.profile-container-upper-right {
+    font-size: 72px; /* Rozmiar czcionki */
+    color: white; /* Kolor tekstu */
+    margin-top: 20px; /* Margines górny */
+    margin-bottom: 20px; /* Margines dolny */
+    font-weight: bold; /* Grubość czcionki */
+    min-width: 850px;
+    text-align: center;
+}
 

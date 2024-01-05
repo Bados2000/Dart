@@ -27,10 +27,8 @@
             <ul class="navbar-nav me-auto">
                 <!-- Add other links as needed -->
                 <li class="nav-item"><a class="nav-link active" href="/#eDart"><b>eDart</b></a></li>
-                <li class="nav-item"><a class="nav-link" href="/#projects">Wprowadzenie</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#autosystem">Nasz projekt</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#signup">Kontakt</a></li>
-
+                <li class="nav-item"><a class="nav-link" href="/#projects">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#autosystem">Statystyki</a></li>
             </ul>
             @auth
                 <a class="user-btn" href="{{ route('profile') }}">
@@ -69,24 +67,24 @@
                     </form>
                 </div>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-
-            @endguest
-
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
         </div>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+    </div>
+
+    @endguest
+
+    </div>
     </div>
 </nav>
 
