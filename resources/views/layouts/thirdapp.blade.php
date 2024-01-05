@@ -27,8 +27,8 @@
             <ul class="navbar-nav me-auto">
                 <!-- Add other links as needed -->
                 <li class="nav-item"><a class="nav-link active" href="/#eDart"><b>eDart</b></a></li>
-                <li class="nav-item"><a class="nav-link" href="/#projects">Profil</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#autosystem">Statystyki</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('stats') }}">Statystyki</a></li>
             </ul>
             @auth
                 <a class="user-btn" href="{{ route('profile') }}">

@@ -11661,4 +11661,54 @@ a:hover {
     min-width: 850px;
     text-align: center;
 }
-
+.profile-container-lower {
+    display: flex;
+    flex-direction: column; /* Układa elementy w pionie */
+    justify-content: center;
+    align-items: center;
+    /* Style dla logo i nazwy użytkownika */
+    height: auto;
+    width: 1000px;
+    border: 8px solid #0d1619;
+    padding-top: 20px;
+; /* Obramowanie */
+    border-top-left-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-left-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    background-color: gray;
+}
+.profile-container-stats-score {
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Układa elementy w pionie */
+    justify-content: center;
+    align-items: center;
+    /* Style dla logo i nazwy użytkownika */
+    height: 90px;
+    width: 140px;
+    border: 8px solid #0d1619;
+; /* Obramowanie */
+    border-top-left-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-left-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    background-color: gray;
+}
+.profile-container-stats {
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Układa elementy w pionie */
+    justify-content: center;
+    align-items: center;
+    /* Style dla logo i nazwy użytkownika */
+    height: auto;
+    width: auto;
+    border: 8px solid #0d1619;
+; /* Obramowanie */
+    border-top-left-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-left-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    background-color: gray;
+}

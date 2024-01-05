@@ -28,6 +28,10 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
+Route::get('/stats', function () {
+    return view('stats');
+})->name('stats');
+
 Auth::routes();
 
 Route::get('/redirectToLogin', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToLogin'])->name('redirectToLogin');

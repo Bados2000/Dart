@@ -27,9 +27,7 @@
             <ul class="navbar-nav me-auto">
                 <!-- Add other links as needed -->
                 <li class="nav-item"><a class="nav-link active" href="/#eDart"><b>eDart</b></a></li>
-                <li class="nav-item"><a class="nav-link" href="/#projects">Wprowadzenie</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#autosystem">Nasz projekt</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#signup">Kontakt</a></li>
+
 
             </ul>
             @auth
