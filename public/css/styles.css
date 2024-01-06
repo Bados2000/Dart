@@ -342,6 +342,8 @@ th {
 
 label {
   display: inline-block;
+  white-space: nowrap;
+  margin-left: 15px;
 }
 
 button {
@@ -11377,21 +11379,57 @@ form h2 {
 }
 
 .form-group {
-    margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
 }
-
-.form-group input {
-    width: 100%;
+.form-group .inputcustom {
+    width: 100% !important;
     padding: 10px;
     margin-top: 5px;
     border-radius: 4px;
     border: none;
     background-color: #555;
     color: white;
+    text-align: left;
+}
+.form-group input, .form-group select {
+    width: auto;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 175px;
+    text-align: center; /* Centruje tekst w polu input */
+}
+
+.form-group input[type="checkbox"] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    -webkit-appearance: none; /* Usuwa domyślny wygląd dla WebKit */
+    -moz-appearance: none;    /* Usuwa domyślny wygląd dla Firefox */
+    appearance: none;         /* Usuwa domyślny wygląd dla standardowych przeglądarek */
+    background-color: white;  /* Kolor tła */
+    border: 2px solid #555;   /* Styl obramowania */
+    border-radius: 4px;       /* Promień zaokrąglenia */
+    width: 20px;              /* Szerokość */
+    height: 20px;             /* Wysokość */
+    cursor: pointer;          /* Zmienia kursor na wskaźnik */
+    position: relative;       /* Pozycjonowanie dla pseudoelementu */
+    transform: scale(1);      /* Skalowanie */
+}
+
+.form-group input[type="checkbox"]:checked::before {
+    content: '✔';            /* Znak fajki */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;          /* Rozmiar fajki */
+    color: #555;              /* Kolor fajki */
 }
 
 
@@ -11711,4 +11749,56 @@ a:hover {
     border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
     border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
     background-color: gray;
+}
+.profile-container-lower-settings {
+    display: flex;
+    flex-direction: row; /* Układa elementy w pionie */
+    justify-content: center;
+    align-items: center;
+    /* Style dla logo i nazwy użytkownika */
+    height: auto;
+    width: 1000px;
+    border: 8px solid #0d1619;
+; /* Obramowanie */
+    border-top-left-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-left-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    border-top-right-radius: 175px; /* Zaokrąglenie dolnego lewego rogu */
+    border-bottom-right-radius: 175px; /* Zaokrąglenie dolnego prawego rogu */
+    background-color: gray;
+}
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.flex-container label {
+    margin-right: 10px; /* Dodaje odstęp między etykietą a polem tekstowym */
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+.game-btn {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Dla wycentrowania treści wewnątrz przycisku */
+    width: 200px; /* Stała szerokość przycisku */
+    height: 50px; /* Stała wysokość przycisku */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0; /* Usuwamy padding, jeśli chcemy stałe wymiary */
+    background-color: #0d1619;
+}
+.custom-a:hover {
+    background-color: rgb(255, 85, 0);
+    color:white !important;
+}
+
+.active-link {
+    background-color: #777;
+    color:white !important;
 }

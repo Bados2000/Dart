@@ -27,12 +27,17 @@
             <ul class="navbar-nav me-auto">
                 <!-- Add other links as needed -->
                 <li class="nav-item"><a class="nav-link active" href="/#eDart"><b>eDart</b></a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('stats') }}">Statystyki</a></li>
+                <li class="nav-item"><a class="nav-link active-link" href="#" id="showProfile">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="showStats">Statystyki</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="showSettings">Ustawienia</a></li>
+
             </ul>
             @auth
-                <a class="user-btn" href="{{ route('profile') }}">
-                    <img src="{{ Auth::user()->profile->profile_picture }}" alt="User Logo" class="user-logo">
+
+                <a class="game-btn custom-a play" href="{{ route('game') }}">Graj</a>
+
+                <a class="user-btn" href="{{ route('profile') }}" id="showProfileFromButton">
+                    <img src="{{ Storage::url(Auth::user()->profile->profile_picture) }}" alt="User Logo" class="user-logo">
                     <span>{{ Auth::user()->username }}</span>
                 </a>
             @else

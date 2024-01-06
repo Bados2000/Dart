@@ -6,6 +6,73 @@
 //
 // Scripts
 //
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('showProfile').addEventListener('click', function(e) {
+        e.preventDefault();
+        setActiveLink(this);
+        document.getElementById('profileContent').style.display = 'block';
+        document.getElementById('statsContent').style.display = 'none';
+        document.getElementById('settingsContent').style.display = 'none';
+    });
+
+    document.getElementById('showStats').addEventListener('click', function(e) {
+        e.preventDefault();
+        setActiveLink(this);
+        document.getElementById('profileContent').style.display = 'none';
+        document.getElementById('statsContent').style.display = 'block';
+        document.getElementById('settingsContent').style.display = 'none';
+    });
+
+    document.getElementById('showSettings').addEventListener('click', function(e) {
+        e.preventDefault();
+        setActiveLink(this);
+        document.getElementById('profileContent').style.display = 'none';
+        document.getElementById('statsContent').style.display = 'none';
+        document.getElementById('settingsContent').style.display = 'block';
+    });
+    document.getElementById('showProfileFromButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('profileContent').style.display = 'block';
+        document.getElementById('statsContent').style.display = 'none';
+        document.getElementById('settingsContent').style.display = 'none';
+    });
+});
+function setActiveLink(clickedElement) {
+    // Znajdź wszystkie elementy z klasą 'nav-link'
+    var links = document.querySelectorAll('.nav-link');
+
+    // Usuń klasę 'active-link' z wszystkich linków
+    links.forEach(function(link) {
+        link.classList.remove('active-link');
+    });
+
+    // Dodaj klasę 'active-link' do klikniętego linku
+    clickedElement.classList.add('active-link');
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var autoScoringCheckbox = document.getElementById('autoScoring');
+    var cameraChoiceSelect = document.getElementById('cameraChoice');
+
+    // Funkcje do aktualizacji widoczności
+    function updateAutoScoringVisibility() {
+        document.getElementById('websocketServerIP').style.display = autoScoringCheckbox.checked ? 'block' : 'none';
+    }
+
+    function updateCameraChoiceVisibility() {
+        document.getElementById('externalCameraIP').style.display = cameraChoiceSelect.value === 'external' ? 'block' : 'none';
+    }
+
+    // Dodanie listenerów
+    autoScoringCheckbox.addEventListener('change', updateAutoScoringVisibility);
+    cameraChoiceSelect.addEventListener('change', updateCameraChoiceVisibility);
+
+    // Ustawienie początkowej widoczności
+    updateAutoScoringVisibility();
+    updateCameraChoiceVisibility();
+});
+
+
 let isStopwatchActive = false;
 let stopwatchInterval;
 let elapsedSeconds = 0;

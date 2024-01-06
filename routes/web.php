@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SettingsController;
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
@@ -31,6 +32,15 @@ Route::get('/profile', function () {
 Route::get('/stats', function () {
     return view('stats');
 })->name('stats');
+
+
+// Trasa do wyświetlania formularza
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+
+// Trasa do zapisu danych formularza
+Route::post('/settings', [SettingsController::class, 'store'])->name('settings.store');
+
+Route::post('/profile/update', [SettingsController::class, 'update'])->name('settings.update');
 
 Auth::routes();
 

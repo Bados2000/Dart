@@ -29,15 +29,15 @@
 
                         <div class="form-group">
                             <label for="username">Nazwa użytkownika:</label>
-                            <input type="text" id="username" name="username" required>
+                            <input type="text" id="username" class="inputcustom" name="username" required>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Hasło:</label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" class="inputcustom" name="password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-primary-login-max">Zaloguj</button>
+                        <button type="submit" class="btn btn-primary btn-primary-login-max" style="margin-top: 10px">Zaloguj</button>
                         <a class="btn btn-primary btn-primary-sign-max">Nie pamiętam hasła</a>
 
                     </form>

@@ -6,7 +6,7 @@
             <div class="custom-row">
                 <div class="side-div"> <!-- Lewy div -->
                     <div class="side-div-inside">
-                        <img src="{{ Auth::user()->profile->profile_picture }}" class="fit-image image-border">
+                        <img src="{{ Storage::url(Auth::user()->profile->profile_picture) }}" class="fit-image image-border">
                     </div>
                     <div class="rounded-bottom-corners">
                         <span>{{ Auth::user()->username }}</span>
@@ -19,10 +19,10 @@
 
                 <div class="side-div"> <!-- Prawy div -->
                     <div class="side-div-inside">
-                        <img src="{{ Auth::user()->profile->profile_picture }}" class="fit-image image-border">
+                        <img src="/storage/images/enemy-profile.jpg" class="fit-image image-border">
                     </div>
                     <div class="rounded-bottom-corners">
-                        <span>OPP</span>
+                        <span>Przeciwnik</span>
                     </div>
                 </div>
             </div>

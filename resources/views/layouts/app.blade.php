@@ -33,8 +33,9 @@
 
                 </ul>
                 @auth
-                    <a class="user-btn" href="{{ route('profile') }}">
-                        <img src="{{ Auth::user()->profile->profile_picture }}" alt="User Logo" class="user-logo">
+                    <a class="game-btn custom-a" href="{{ route('game') }}">Graj</a>
+                    <a class="user-btn" href="{{ route('profile') }}" id="showProfileFromButton">
+                        <img src="{{ Storage::url(Auth::user()->profile->profile_picture) }}" alt="User Logo" class="user-logo">
                         <span>{{ Auth::user()->username }}</span>
                     </a>
                 @else

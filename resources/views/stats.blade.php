@@ -5,7 +5,7 @@
         <div class="container-fluid container-fluider px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="row">
 
-                <!-- Lewa kolumna: logo i nazwa użytkownika -->
+                <!-- Górna kolumna: logo i nazwa użytkownika -->
                 <div class="col-12 d-flex justify-content-center align-items-center ">
                     <div class ="d-flex justify-content-center align-items-center profile-container-upper">
                         <div class="profile-container-upper-left">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
 
-                <!-- Prawa kolumna: statystyki użytkownika -->
+                <!-- Dolna kolumna: statystyki użytkownika -->
                 <div class="col-12 d-flex justify-content-center align-items-center ">
                     <div class ="d-flex justify-content-center align-items-center profile-container-lower">
                         <p>Średnia meczowa: 110 </p>

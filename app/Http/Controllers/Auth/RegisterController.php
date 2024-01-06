@@ -5,6 +5,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,13 @@ class RegisterController extends Controller
         $profile->user_id = $user->id;
         // tutaj możesz ustawić domyślne wartości dla profilu
         $profile->save();
+        // Tworzenie profilu użytkownika
+        $settings = new Settings();
+        $settings->user_id = $user->id;
+        // tutaj możesz ustawić domyślne wartości dla profilu
+        $settings->save();
+
+
         // Automatyczne logowanie użytkownika po rejestracji
         Auth::login($user);
 
