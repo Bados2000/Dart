@@ -11802,6 +11802,32 @@ a:hover {
     background-color: #777;
     color:white !important;
 }
+.preview-container {
+    display: flex;
+    width: 100%; /* lub inna wysokość, w zależności od potrzeb */
+}
+.in-game {
+    padding-top: 72px;
+    height: calc(100vh - 72px); /* 100% wysokości okna przeglądarki minus wysokość paska nawigacyjnego */
+}
+.preview-feed-left{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    /* Dodatkowe style dla wyświetlania kamery */
+    display: flex;
+    justify-content: left; /* Wyśrodkowanie w poziomie */
+}
+.preview-feed-center{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    /* Dodatkowe style dla wyświetlania kamery */
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie w poziomie */
+}
+.preview-feed-right{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    /* Dodatkowe style dla wyświetlania kamery */
+    display: flex;
+    justify-content: right; /* Wyśrodkowanie w poziomie */
+}
 .game-container {
     display: flex;
     height: 100%; /* lub inna wysokość, w zależności od potrzeb */
@@ -11809,22 +11835,22 @@ a:hover {
 
 .camera-container {
     display: flex;
-    width: 100%;
+    width: auto;
+    height: auto;
 }
 
 .camera-feed {
-    flex: 2; /* Zajmuje 2/3 szerokości */
+    flex: 1; /* Zajmuje 2/3 szerokości */
     /* Dodatkowe style dla wyświetlania kamery */
-    margin-top: 90px;
+
 }
 
 .side-content {
     flex: 1; /* Zajmuje 1/3 szerokości */
     /* Dodatkowe style dla prawego diva */
-    margin-top: 90px;
 }
 #cameraStream {
-    width: 100%;
+    width: 95%;
     height: auto;
     object-fit: cover;
     object-position: center;
@@ -11839,15 +11865,22 @@ a:hover {
     border: 8px solid black;
     border-radius: 30px;
 }
-.camera-containerek {
+.camera-containerek-left{
     position: relative;
+    display: flex;
+    justify-content: left; /* Wyśrodkowanie w poziomie */
+}
+.camera-containerek-right{
+    position: relative;
+    display: flex;
+    justify-content: right; /* Wyśrodkowanie w poziomie */
 }
 
 
 .fullscreen-button {
     position: absolute;
-    right: 15px;
-    bottom: 15px;
+    left: 20px;
+    top: calc(100% - 52px);
     z-index: 10;
     border: none;
     background: transparent;

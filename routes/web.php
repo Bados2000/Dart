@@ -33,10 +33,12 @@ Route::middleware('auth')->group(function () {
         return view('stats');
     })->name('stats');
 
-    Route::get('/ingame', function () {
-        return view('ingame');
-    })->name('ingame');
 
+
+    Route::get('/api/check-match', [GameController::class, 'checkMatch']);
+    Route::get('/api/get-opponent/{id}', [GameController::class, 'getOpponent']);
+    Route::post('/join-queue', [GameController::class, 'joinQueue'])->name('join-queue');
+    Route::get('/ingame', [GameController::class, 'showGameView'])->name('ingame');
 
 // Trasa do wyświetlania formularza
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
@@ -46,7 +48,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile/update', [SettingsController::class, 'update'])->name('settings.update');
 
-    Route::post('/join-queue', [GameController::class, 'joinQueue'])->name('join-queue');
 
 });
 
