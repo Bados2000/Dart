@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\GameController;
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
@@ -17,30 +18,41 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 |
 */
 
-Route::get('/', function () {
-    return view('dart');
-})->name('dart');
+Route::middleware('auth')->group(function () {
+    // Zdefiniuj trasy, które wymagają zalogowanego użytkownika
 
-Route::get('/game', function () {
-    return view('game');
-})->name('game');
+    Route::get('/game', function () {
+        return view('game');
+    })->name('game');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
 
-Route::get('/stats', function () {
-    return view('stats');
-})->name('stats');
+    Route::get('/stats', function () {
+        return view('stats');
+    })->name('stats');
+
+    Route::get('/ingame', function () {
+        return view('ingame');
+    })->name('ingame');
 
 
 // Trasa do wyświetlania formularza
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
 // Trasa do zapisu danych formularza
-Route::post('/settings', [SettingsController::class, 'store'])->name('settings.store');
+    Route::post('/settings', [SettingsController::class, 'store'])->name('settings.store');
 
-Route::post('/profile/update', [SettingsController::class, 'update'])->name('settings.update');
+    Route::post('/profile/update', [SettingsController::class, 'update'])->name('settings.update');
+
+    Route::post('/join-queue', [GameController::class, 'joinQueue'])->name('join-queue');
+
+});
+
+Route::get('/', function () {
+    return view('dart');
+})->name('dart');
 
 Auth::routes();
 

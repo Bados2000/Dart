@@ -22,6 +22,8 @@ class Settings extends Model
     protected $fillable = [
         'camera',
         'camera_ip',
+        'second_camera',
+        'second_camera_ip',
         'auto_scoring',
         'websocket_server_ip'
     ];

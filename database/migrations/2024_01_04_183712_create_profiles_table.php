@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('profile_picture')->default('storage/images/default-profile.jpg');
+            $table->string('profile_picture')->default('images/default-profile.jpg');
             $table->integer('games_played')->default(0);
             $table->integer('games_won')->default(0);
             $table->integer('games_lost')->default(0);

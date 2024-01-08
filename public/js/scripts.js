@@ -52,57 +52,51 @@ function setActiveLink(clickedElement) {
 }
 document.addEventListener('DOMContentLoaded', function() {
     var autoScoringCheckbox = document.getElementById('autoScoring');
-    var cameraChoiceSelect = document.getElementById('cameraChoice');
+    var firstCameraChoiceSelect = document.getElementById('cameraChoice');
+    var secondCameraChoiceSelect = document.getElementById('secondCameraChoice');
 
     // Funkcje do aktualizacji widoczności
     function updateAutoScoringVisibility() {
+        var autoScoringCheckbox = document.getElementById('autoScoring');
+        var firstCameraChoiceSelect = document.getElementById('cameraChoice');
+
         document.getElementById('websocketServerIP').style.display = autoScoringCheckbox.checked ? 'block' : 'none';
+        document.getElementById('externalCameraChoice').style.display = autoScoringCheckbox.checked ? 'none' : 'block';
+
+        // Ukryj lub pokaż externalCameraIP w zależności od stanu autoScoring i wybranej wartości w firstCameraChoiceSelect
+        if (!autoScoringCheckbox.checked) {
+            if (firstCameraChoiceSelect.value === 'external') {
+                document.getElementById('externalCameraIP').style.display = 'block';
+            } else {
+                document.getElementById('externalCameraIP').style.display = 'none';
+            }
+        } else {
+            document.getElementById('externalCameraIP').style.display = 'none';
+        }
     }
 
-    function updateCameraChoiceVisibility() {
-        document.getElementById('externalCameraIP').style.display = cameraChoiceSelect.value === 'external' ? 'block' : 'none';
+    function updateFirstCameraChoiceVisibility() {
+        document.getElementById('externalCameraIP').style.display = firstCameraChoiceSelect.value === 'external' ? 'block' : 'none';
+    }
+
+    function updateSecondCameraChoiceVisibility() {
+        document.getElementById('externalSecondCameraIP').style.display = secondCameraChoiceSelect.value === 'external' ? 'block' : 'none';
     }
 
     // Dodanie listenerów
     autoScoringCheckbox.addEventListener('change', updateAutoScoringVisibility);
-    cameraChoiceSelect.addEventListener('change', updateCameraChoiceVisibility);
+    firstCameraChoiceSelect.addEventListener('change', updateFirstCameraChoiceVisibility);
+    secondCameraChoiceSelect.addEventListener('change', updateSecondCameraChoiceVisibility);
 
     // Ustawienie początkowej widoczności
     updateAutoScoringVisibility();
-    updateCameraChoiceVisibility();
+    updateFirstCameraChoiceVisibility();
+    updateSecondCameraChoiceVisibility();
 });
 
 
-let isStopwatchActive = false;
-let stopwatchInterval;
-let elapsedSeconds = 0;
 
-const button = document.getElementById('search-toggle-button');
-button.addEventListener('click', function() {
-    if (isStopwatchActive) {
-        // Zatrzymaj stoper i zmień tekst na "Szukaj"
-        clearInterval(stopwatchInterval);
-        button.textContent = 'Szukaj';
-        button.classList.remove('active');
-        isStopwatchActive = false;
-    } else {
-        // Ustaw tekst na "00:00" i uruchom stoper
-        button.textContent = '00:00';
-        elapsedSeconds = 0;
-        stopwatchInterval = setInterval(function() {
-            elapsedSeconds++;
-            button.textContent = formatTime(elapsedSeconds);
-        }, 1000);
-        button.classList.add('active');
-        isStopwatchActive = true;
-    }
-});
 
-function formatTime(totalSeconds) {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-}
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element
@@ -126,5 +120,5 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
 });
+

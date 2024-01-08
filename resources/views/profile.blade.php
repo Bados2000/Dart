@@ -94,20 +94,23 @@
                         <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
                     </div>
                 </div>
+                <!-- Dodatkowy wybór dla drugiej kamery -->
                 <div class="col-12 d-flex justify-content-center align-items-center form-group">
-                    <div class ="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
-                        <label for="cameraChoice">Wybierz kamerę:</label>
-                        <select id="cameraChoice" name="cameraChoice">
-                                    <option value="default" {{ Auth::user()->settings->camera == 'default' ? 'selected' : '' }}>Domyślna kamera</option>
-                                    <option value="external" {{ Auth::user()->settings->camera == 'external' ? 'selected' : '' }}>Kamera internetowa</option>
+                    <div class="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
+                        <label for="secondCameraChoice">Wybierz kamerę do podglądu ustawienia gracza :</label>
+                        <select id="secondCameraChoice" name="secondCameraChoice">
+                            <option value="default" {{ Auth::user()->settings->second_camera == 'default' ? 'selected' : '' }}>Domyślna kamera</option>
+                            <option value="external" {{ Auth::user()->settings->second_camera == 'external' ? 'selected' : '' }}>Kamera internetowa</option>
                         </select>
                     </div>
                 </div>
-                <div id="externalCameraIP" style="display: none;">
-                    <div class="col-12 d-flex justify-content-center align-items-center form-group" >
-                        <div class ="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
-                            <label for="cameraIP">Adres IP kamery internetowej:</label>
-                            <input type="text" id="cameraIP" name="cameraIP" value="{{ Auth::user()->settings->camera_ip ?? '' }}">
+
+                <!-- Pole adresu IP dla drugiej kamery internetowej -->
+                <div id="externalSecondCameraIP" style="display: none;">
+                    <div class="col-12 d-flex justify-content-center align-items-center form-group">
+                        <div class="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
+                            <label for="secondCameraIP">Adres IP drugiej kamery internetowej:</label>
+                            <input type="text" id="secondCameraIP" name="secondCameraIP" value="{{ Auth::user()->settings->second_camera_ip ?? '' }}">
                         </div>
                     </div>
                 </div>
@@ -122,6 +125,25 @@
                         <div class="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
                             <label for="serverIP">Adres IP serwera websocket:</label>
                             <input type="text" id="serverIP" name="serverIP" value="{{ Auth::user()->settings->websocket_server_ip ?? '' }}">
+                        </div>
+                    </div>
+                </div>
+                <div id="externalCameraChoice" style="display: none">
+                    <div  class="col-12 d-flex justify-content-center align-items-center form-group">
+                        <div class ="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
+                            <label for="cameraChoice">Wybierz kamerę do śledzenia  tarczy:</label>
+                            <select id="cameraChoice" name="cameraChoice">
+                                <option value="default" {{ Auth::user()->settings->camera == 'default' ? 'selected' : '' }}>Domyślna kamera</option>
+                                <option value="external" {{ Auth::user()->settings->camera == 'external' ? 'selected' : '' }}>Kamera internetowa</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="externalCameraIP" class="dart_camera" style="display: none;">
+                    <div class="col-12 d-flex justify-content-center align-items-center form-group" >
+                        <div class ="d-flex justify-content-center align-items-center profile-container-lower-settings flex-container">
+                            <label for="cameraIP">Adres IP kamery internetowej:</label>
+                            <input type="text" id="cameraIP" name="cameraIP" value="{{ Auth::user()->settings->camera_ip ?? '' }}">
                         </div>
                     </div>
                 </div>

@@ -12,10 +12,12 @@ class SettingsController extends Controller
     {
         $user = Auth::user();
         $profile = $user->profile;
+        $setting = $user->settings;
 
+        // Aktualizacja zdjęcia profilowego
         if ($request->hasFile('profilePicture') && $request->file('profilePicture')->isValid()) {
-            // Usuń stare zdjęcie, jeśli istnieje
-            if ($profile->profile_picture && Storage::disk('public')->exists($profile->profile_picture)) {
+            // Usuń stare zdjęcie, tylko jeśli nie jest to zdjęcie domyślne
+            if ($profile->profile_picture && !str_contains($profile->profile_picture, 'default-profile.jpg')) {
                 Storage::disk('public')->delete($profile->profile_picture);
             }
 
@@ -25,8 +27,24 @@ class SettingsController extends Controller
             $profile->save();
         }
 
-        return redirect()->back()->with('success', 'Profil zaktualizowany.');
+        // Aktualizacja ustawień
+        if ($setting) {
+            $setting->update([
+                'camera' => $request->cameraChoice,
+                'camera_ip' => $request->cameraIP,
+                'second_camera' => $request->secondCameraChoice,
+                'second_camera_ip' => $request->secondCameraIP,
+                'auto_scoring' => $request->has('autoScoring'),
+                'websocket_server_ip' => $request->serverIP,
+            ]);
+        } else {
+            // Logika, jeśli ustawienia nie istnieją (możesz tu utworzyć nowe ustawienia)
+        }
+
+        // Przekierowanie z powrotem z wiadomością o sukcesie
+        return redirect()->back()->with('success', 'Profil i ustawienia zostały zaktualizowane.');
     }
+
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $user = Auth::user();
@@ -35,23 +53,5 @@ class SettingsController extends Controller
         return view('settings.index', ['setting' => $settings]);
     }
 
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
-    {
-        $user = Auth::user();
-        $setting = $user->settings; // Zmień na 'setting'
 
-        if ($setting) {
-            // Aktualizacja istniejących ustawień
-            $setting->update([
-                'camera' => $request->cameraChoice,
-                'camera_ip' => $request->cameraIP,
-                'auto_scoring' => $request->has('autoScoring'),
-                'websocket_server_ip' => $request->serverIP,
-            ]);
-        } else {
-            // Logika, jeśli ustawienia nie istnieją (możesz też tu utworzyć nowe ustawienia)
-        }
-
-        return redirect()->back()->with('success', 'Ustawienia zostały zaktualizowane.');
-    }
 }
