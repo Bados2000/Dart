@@ -20,7 +20,7 @@
                 <!-- Prawa kolumna: statystyki użytkownika -->
                 <div class="col-12 d-flex justify-content-center align-items-center" >
                     <div class ="d-flex justify-content-center align-items-center profile-container-lower">
-                        <p><strong>Miejsce w rankingu: </strong>{{ Auth::user()->profile->ranking_position}}</p>
+                        <p><strong>Miejsce w rankingu: </strong>{{ Auth::user()->profile->ranking->position }}</p>
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center ">

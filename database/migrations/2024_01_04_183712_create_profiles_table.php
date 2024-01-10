@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('games_played')->default(0);
             $table->integer('games_won')->default(0);
             $table->integer('games_lost')->default(0);
-            $table->integer('ranking_points')->default(0);
+            $table->integer('ranking_points')->default(100);
             $table->integer('ranking_position')->default(0);
             $table->timestamps();
         });

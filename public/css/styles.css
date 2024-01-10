@@ -2856,9 +2856,9 @@ textarea.form-control-lg {
 }
 
 .btn-primary-login {
-    --bs-btn-focus-shadow-rgb: rgb(255, 85, 0);
-    --bs-btn-hover-bg: rgb(255, 115, 0);
-    --bs-btn-bg: rgb(255, 85, 0);
+    --bs-btn-focus-shadow-rgb: #64a19d;
+    --bs-btn-hover-bg: #64a19d;
+    --bs-btn-bg: #64a19d;
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -2869,9 +2869,9 @@ textarea.form-control-lg {
     width: auto;
 }
 .btn-primary-login-max {
-    --bs-btn-focus-shadow-rgb: rgb(255, 85, 0);
-    --bs-btn-hover-bg: rgb(255, 115, 0);
-    --bs-btn-bg: rgb(255, 85, 0);
+    --bs-btn-focus-shadow-rgb: #64a19d;
+    --bs-btn-hover-bg: #64a19d;
+    --bs-btn-bg: #64a19d;
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -2910,9 +2910,9 @@ textarea.form-control-lg {
     width: 100%;
 }
 .btn-primary-start {
-    --bs-btn-focus-shadow-rgb: rgb(255, 85, 0);
-    --bs-btn-hover-bg: rgb(255, 85, 0);
-    --bs-btn-bg: rgb(255, 85, 0);
+    --bs-btn-focus-shadow-rgb: #64a19d;
+    --bs-btn-hover-bg: #64a19d;
+    --bs-btn-bg: #64a19d;
 }
 .btn-primary {
   --bs-btn-color: #fff;
@@ -11625,7 +11625,7 @@ a:hover {
 }
 .search-button {
     /* Podstawowe style dla przycisku */
-    color: black;
+    color: white;
     font-weight: bold; /* Pogrubienie tekstu */
     font-size: 23px; /* Zmienia rozmiar tekstu */
 
@@ -11794,7 +11794,7 @@ a:hover {
     background-color: #0d1619;
 }
 .custom-a:hover {
-    background-color: rgb(255, 85, 0);
+    background-color: #64a19d;
     color:white !important;
 }
 
@@ -11816,12 +11816,10 @@ a:hover {
     display: flex;
     justify-content: left; /* Wyśrodkowanie w poziomie */
 }
-.preview-feed-center{
-    flex: 1; /* Zajmuje 2/3 szerokości */
-    /* Dodatkowe style dla wyświetlania kamery */
-    display: flex;
-    justify-content: center; /* Wyśrodkowanie w poziomie */
-}
+
+/* Style dla lewej i prawej części */
+/* Style dla lewej i prawej części */
+
 .preview-feed-right{
     flex: 1; /* Zajmuje 2/3 szerokości */
     /* Dodatkowe style dla wyświetlania kamery */
@@ -11855,7 +11853,15 @@ a:hover {
     object-fit: cover;
     object-position: center;
     border: 8px solid black;
-    border-radius: 30px;
+    border-radius: 10px;
+}
+#websocket_video_canvas {
+    width: 95%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border: 8px solid black;
+    border-radius: 10px;
 }
 #cameraStreamSide {
     width: 100%;
@@ -11896,3 +11902,189 @@ a:hover {
     object-fit: contain; /* upewnia się, że cały obraz jest widoczny w obrębie przycisku */
 }
 
+
+.preview-feed-center{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    /* Dodatkowe style dla wyświetlania kamery */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Możesz dostosować wysokość */
+    width: auto;
+    background-color: red !important;
+    border: 8px solid black;
+    border-radius: 10px;
+}
+.preview-feed-center-aftergame{
+    display: none ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    border: 8px solid black;
+    border-radius: 10px;
+
+}
+
+.score_name{
+    flex:1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 8px solid black;
+    text-align: center;
+    color:black;
+}
+.score-name-left{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    background-color: gray;
+    border-right: solid 8px black;
+    text-align: center;
+    font-size: 2vw; /* Procent szerokości viewportu */
+    max-font-size: 72px; /* Maksymalny rozmiar czcionki */
+    color:white;
+}
+.score-name-right{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+    font-size: 2vw; /* Procent szerokości viewportu */
+    max-font-size: 72px; /* Maksymalny rozmiar czcionki */
+    color:white;
+
+}
+.score-top{
+    flex:2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 8px solid black;
+    text-align: center;
+}
+.score-bot{
+    flex:2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.score-top-left{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    border-right: solid 8px black;
+}
+.score-top-left-left{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    border-right: solid 8px black;
+
+}
+.score-top-left-left-up {
+    flex: 1; /* Zajmuje całą dostępną przestrzeń */
+    display: flex; /* Ustawienie Flexbox */
+    flex-direction: column; /* Elementy są ułożone w kolumnie */
+    justify-content: center; /* Centrowanie w pionie */
+    align-items: center; /* Centrowanie w poziomie */
+    width: 100%; /* Pełna szerokość */
+    background-color: gray; /* Kolor tła */
+    font-size: 5vw; /* Procent szerokości viewportu */
+    max-font-size: 72px; /* Maksymalny rozmiar czcionki */
+}
+.score-top-left-left-down {
+    flex: 1; /* Zajmuje całą dostępną przestrzeń */
+    display: flex; /* Ustawienie Flexbox */
+    flex-direction: column; /* Elementy są ułożone w kolumnie */
+    justify-content: center; /* Centrowanie w pionie */
+    align-items: center; /* Centrowanie w poziomie */
+    width: 100%; /* Pełna szerokość */
+    background-color: gray; /* Kolor tła */
+    font-size: 5vw; /* Procent szerokości viewportu */
+    max-font-size: 72px; /* Maksymalny rozmiar czcionki */
+}
+
+
+.score-top-left-right{
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.score-top-right {
+    flex: 1; /* Zajmuje 2/3 szerokości */
+    align-items: center;
+    height: 100%; /* Możesz dostosować wysokość */
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.desc{
+    border-top: 8px solid black;
+    width: 100%;
+    text-align: center;
+    color:black;
+}
+.score-bot {
+    flex:1;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scoreForm {
+    display: flex;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+
+    gap: 10px; /* odstęp między elementami formularza */
+}
+
+#scoreInput {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#scoreForm button {
+    padding: 10px 15px;
+    background-color: #64a19d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#scoreForm button:hover {
+    background-color: #0056b3;
+}

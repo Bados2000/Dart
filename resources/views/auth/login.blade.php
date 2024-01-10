@@ -38,7 +38,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-primary-login-max" style="margin-top: 10px">Zaloguj</button>
-                        <a class="btn btn-primary btn-primary-sign-max">Nie pamiętam hasła</a>
+                        <a class="btn btn-primary btn-primary-sign-max" href="http://127.0.0.1:8000/register">Nie mam konta</a>
 
                     </form>
                 </div>

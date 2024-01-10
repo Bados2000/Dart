@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Jobs\MatchPlayers;
+use App\Jobs\UpdateRankingJob;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+
     // w User.php
     public function settings(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
@@ -30,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'firstname',
+
         'lastname',
         'birthdate',
         'email',

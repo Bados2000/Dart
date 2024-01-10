@@ -13,6 +13,12 @@ class CreateFightsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('player1_id');
             $table->unsignedBigInteger('player2_id');
+            $table->integer('player1_legs')->default(0);
+            $table->integer('player2_legs')->default(0);
+            $table->integer('player1_points')->default(501);
+            $table->integer('player2_points')->default(501);
+            $table->integer('player1_darts')->default(0);
+            $table->integer('player2_darts')->default(0);
             $table->timestamps();
 
             $table->foreign('player1_id')->references('id')->on('users')->onDelete('cascade');

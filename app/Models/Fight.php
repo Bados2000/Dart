@@ -13,6 +13,12 @@ class Fight extends Model
     protected $fillable = [
         'player1_id',
         'player2_id',
+        'player1_legs',
+        'player2_legs',
+        'player1_points',
+        'player2_points',
+        'player1_darts',
+        'player2_darts',
         // Inne pola, które mogą być potrzebne
     ];
 

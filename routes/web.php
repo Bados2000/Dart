@@ -39,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/api/get-opponent/{id}', [GameController::class, 'getOpponent']);
     Route::post('/join-queue', [GameController::class, 'joinQueue'])->name('join-queue');
     Route::get('/ingame', [GameController::class, 'showGameView'])->name('ingame');
+    Route::get('/api/current-fight-id', [GameController::class, 'getCurrentFightId'])->name('game.current-fight-id');
+    Route::post('/api/update-score/{fightId}', [GameController::class,'updateScore']);
+    Route::get('/api/get-current-score/{fightId}', [GameController::class, 'getCurrentScore']);
+    Route::get('/aftergame', [GameController::class, 'showAfterGame'])->name('aftergame');
+    Route::post('/api/delete-fight/{fightId}', [GameController::class, 'deleteFight']);
 
 // Trasa do wyświetlania formularza
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');

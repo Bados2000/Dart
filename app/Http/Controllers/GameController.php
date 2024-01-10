@@ -12,6 +12,114 @@ use Illuminate\Support\Facades\Log;
 
 class GameController extends Controller
 {
+    public function getCurrentScore($fightId): \Illuminate\Http\JsonResponse
+    {
+        $fight = Fight::find($fightId);
+
+        if (!$fight) {
+            return response()->json(['error' => 'Walka nie znaleziona'], 404);
+        }
+
+        return response()->json([
+            'player1_score' => $fight->player1_points,
+            'player2_score' => $fight->player2_points,
+            'player1_legs' => $fight->player1_legs, // Dodane
+            'player2_legs' => $fight->player2_legs, // Dodane
+            'player1_name' => User::find($fight->player1_id)->username,
+            'player2_name' => User::find($fight->player2_id)->username,
+            'logged_in_user_id' => Auth::id(), // Dodane
+
+        ]);
+    }
+    // app/Http/Controllers/GameController.php
+    public function updateScore(Request $request, $fightId): \Illuminate\Http\JsonResponse
+    {
+        // Pobranie wyniku przesłanego przez gracza
+        $submittedScore = $request->input('score');
+
+        // Pobranie walki na podstawie fightId
+        $fight = Fight::find($fightId);
+
+        if (!$fight) {
+            return response()->json(['error' => 'Walka nie znaleziona'], 404);
+        }
+
+        // Pobranie zalogowanego użytkownika
+        $user = Auth::user();
+
+        if ($user->id == $fight->player1_id) {
+            $fight->player1_points = max(0, $fight->player1_points - $submittedScore);
+            if ($fight->player1_points == 0) {
+                $fight->player1_legs += 1;
+                if ($fight->player1_legs >= 3 || $fight->player2_legs >= 3) {
+                    $this->finalizeGameAndUpdateRanking($fight);
+                }
+                $fight->player1_points = 501;
+                // Możesz tutaj również resetować wyniki dla następnego lega, jeśli to konieczne
+            }
+        } elseif ($user->id == $fight->player2_id) {
+            $fight->player2_points = max(0, $fight->player2_points - $submittedScore);
+            if ($fight->player2_points == 0) {
+                $fight->player2_legs += 1;
+                if ($fight->player1_legs >= 3 || $fight->player2_legs >= 3) {
+                    $this->finalizeGameAndUpdateRanking($fight);
+                }
+                $fight->player2_points = 501;
+                // Analogicznie jak wyżej dla player2
+            }
+        } else {
+            return response()->json(['error' => 'Nie jesteś uczestnikiem tej walki'], 403);
+        }
+
+        // Zapisanie zmian w bazie danych
+        $fight->save();
+
+        return response()->json(['message' => 'Wynik zaktualizowany']);
+    }
+
+    private function finalizeGameAndUpdateRanking($fight): void
+    {
+        // Określ zwycięzcę i przegranego
+        $winnerId = $fight->player1_legs >= 3 ? $fight->player1_id : $fight->player2_id;
+        $loserId = $fight->player1_legs >= 3 ? $fight->player2_id : $fight->player1_id;
+
+        // Aktualizacja rankingu
+        $this->updateRanking($winnerId, true); // Dodaj punkty zwycięzcy
+        $this->updateRanking($loserId, false); // Odejmij punkty przegranego
+        $winnerName = User::find($winnerId)->username;
+        Log::info('Finalizacja gry dla walki ID: ' . $winnerName);
+
+    }
+    public function deleteFight($fightId):void
+    {
+        $fight = Fight::find($fightId);
+        if ($fight) {
+            Log::info('Usunięto walke: ' . $fightId);
+            $fight->delete();
+        }
+        Log::info('Nie usunięto walki: ' . $fightId);
+
+    }
+    private function updateRanking($userId, $isWinner): void
+    {
+        $profile = User::find($userId)->profile;
+        $change = $isWinner ? 5 : -5;
+        $profile->ranking_points += $change;
+        $profile->save();
+    }
+    public function getCurrentFightId(): \Illuminate\Http\JsonResponse
+    {
+        $user = Auth::user();
+
+        $fight = Fight::where(function ($query) use ($user) {
+            $query->where('player1_id', $user->id)
+                ->orWhere('player2_id', $user->id);
+        })->latest()->first();
+
+        return response()->json(['fightId' => $fight ? $fight->id : null]);
+    }
+
+
     public function showGameView()
     {
         $user = Auth::user();
@@ -25,15 +133,28 @@ class GameController extends Controller
 
             if ($opponent) {
                 $opponentCameraIp = $opponent->settings->camera_ip; // Zakładając, że masz takie pole w ustawieniach użytkownika
-
+                $opponentSecondCameraIp = $opponent->settings->second_camera_ip; // Zakładając, że masz takie pole w ustawieniach użytkownika
+                $opponentAutoScoring = $opponent->settings->auto_scoring; // Zakładając, że masz takie pole w ustawieniach użytkownika
+                $opponentWebSocket = $opponent->settings->websocket_server_ip; // Zakładając, że masz takie pole w ustawieniach użytkownika
+                $opponentUserName = $opponent->username;
+                $opponentFirstCamera = $opponent->settings->camera;
+                $opponentSecondCamera = $opponent->settings->second_camera;
                 return view('ingame', [
-                    'opponentCameraIp' => $opponentCameraIp
+                    'fight' => $fight,
+                    'opponentCameraIp' => $opponentCameraIp,
+                    'opponentUserName' => $opponentUserName,
+                    'opponentSecondCameraIp' => $opponentSecondCameraIp,
+                    'opponentAutoScoring' => $opponentAutoScoring,
+                    'opponentWebSocket' => $opponentWebSocket,
+                    'opponentFirstCamera' => $opponentFirstCamera,
+                    'opponentSecondCamera' => $opponentSecondCamera,
                 ]);
             }
         }
 
-
+        // Możesz dodać tutaj obsługę sytuacji, gdy walka nie zostanie znaleziona
     }
+
     public function checkMatch(): \Illuminate\Http\JsonResponse
     {
         try {
